@@ -113,25 +113,29 @@ const dobench = false
 nsamples = 3
 
 @testset "Pnufft.jl" begin
-    for d in 1:3
-        for M in (100, 1000, 10000, 100000) #, 1000000, 10000000
-            for fp in (Float32, Float64)
-                @testset "($d,$M,$fp,$nftype)" for nftype in 1:3
-                    N = (N1,N2,N3)[1:d]
-                    x,s,c,ftilde = prepare_data(fp,nftype,M,N...)
+    if CUDA.functional()
+        for d in 1:3
+            for M in (100, 1000, 10000, 100000) #, 1000000, 10000000
+                for fp in (Float32, Float64)
+                    @testset "($d,$M,$fp,$nftype)" for nftype in 1:3
+                        N = (N1,N2,N3)[1:d]
+                        x,s,c,ftilde = prepare_data(fp,nftype,M,N...)
 
-                    # Low precision: rounding-off error occurs
-                    # Type 3 transform: error accumulates
-                    rtol = (fp==Float32) ? 5e-4 : (nftype == 3 ? sqrt(tol) : tol)
-                    for iflag in (-1,1)
-                        bench = run(nftype, iflag, x, s, c, ftilde, tol=tol, timecheck=false)
+                        # Low precision: rounding-off error occurs
+                        # Type 3 transform: error accumulates
+                        rtol = (fp==Float32) ? 5e-4 : (nftype == 3 ? sqrt(tol) : tol)
+                        for iflag in (-1,1)
+                            bench = run(nftype, iflag, x, s, c, ftilde, tol=tol, timecheck=false)
 
-                        grt, est = validate(nftype, iflag, x, s, c, ftilde, nsamples=nsamples)
-                        @test all(isapprox.(grt, est, rtol=rtol))
+                            grt, est = validate(nftype, iflag, x, s, c, ftilde, nsamples=nsamples)
+                            @test all(isapprox.(grt, est, rtol=rtol))
+                        end
                     end
                 end
             end
         end
+    else
+        @test true
     end
 end
 
