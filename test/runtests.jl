@@ -1,10 +1,9 @@
-include("utils.jl")
-
 using Pnufft
 using CUDA
 using Test
 Pnufft.FFTW.set_num_threads(Threads.nthreads())
 
+include("utils.jl")
 const N1,N2,N3 = 64,64,64 # 124,98,116 # 
 const nsamples = 5
 const tol = 1e-6
