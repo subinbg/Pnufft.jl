@@ -1,14 +1,14 @@
 module Pnufft
 
+using FFTW
 using CUDA
+using FLoops
 using SpecialFunctions: besselj, besseli
 
-export makeplan, execute!
+export plan_nufft!
 
-const FLT = Union{Float32, Float64}
-const CPX = Union{ComplexF32, ComplexF64}
-const cuDevBuffer = CUDA.Mem.DeviceBuffer
 
+include("atomics.jl")
 include("utils.jl")
 include("kernel.jl")
 include("plan.jl")
