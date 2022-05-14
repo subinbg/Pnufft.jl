@@ -6,10 +6,10 @@
 A Julia package for non-uniform fast Fourier transform (NUFFT).      
 - This pacakge supports both CPU (via `FLoops.jl`) and GPU (via `CUDA.jl`)    
 - The NUFFT type 1-3 operations on dimension 1-3
-- Both $+2\pi i$ and $-2\pi i$ (sign of the exponent) are supported
+- Both `+1` and `-1` (sign of the exponent) are supported
 
 A typical example usage is (check `runtests.jl` for more detailed examples):     
-` ``r
+```julia
 plan = plan_nufft!(X, N)
 plan(target, iflag, source)
-` ``
+```
