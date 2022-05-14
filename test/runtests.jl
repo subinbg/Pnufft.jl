@@ -26,7 +26,8 @@ const tol = 1e-6
                         target = nftype == 2 ? c : ftilde
 
                         # Low precision: rounding-off error occurs
-                        rtol = (fp==Float32) ? 1e-3 : 3.0*tol
+                        # Here, set the target tolerance loosely
+                        rtol = (fp==Float32) ? 1e-3 : 10*tol
 
                         for iflag in (-1,1)
                             plan(target, iflag, source)
