@@ -1,5 +1,5 @@
 name = "Pnufft"
-uuid = "c8d4d490-ec5c-45bb-97ad-a9c139c85725"
+uuid = "023b42a8-6582-4d22-97c6-73cb7e203889"
 authors = ["Subeen Pang <subinbg@users.noreply.github.com> and contributors"]
 version = "0.1.0"
 
@@ -8,14 +8,6 @@ CUDA = "052768ef-5323-5732-b1bb-66c8b64840ba"
 FFTW = "7a1cc6ca-52ef-59f5-83cd-3a7055c09341"
 FLoops = "cc61a311-1640-44b5-9fba-1b764f453329"
 SpecialFunctions = "276daf66-3868-5448-9aa4-cd146d93841b"
-Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [compat]
-CUDA = "3"
-julia = "1.6"
-
-[extras]
-Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
-
-[targets]
-test = ["Test"]
+julia = "1.8"
