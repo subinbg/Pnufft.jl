@@ -20,7 +20,7 @@ where $`\mathcal{I}_{N_{i}} = \left\{-N_{i}/2, -N_{i}/2+1, \cdots N_{i}/2-1 \rig
 - The type-2 transform (uniform to non-uniform) computes Fourier components on non-uniform grid points $`\mathbf{x}_{m} \in [-1/2,1/2]^{D}`$ from coefficients on uniform grid points $`\mathbf{q} \in \mathcal{I}_{N\_{1}} \times \cdots \times \mathcal{I}_{N_{D}}`$:
 
 ```math
-c_{m} = \sum_{\mathbf{q} \in \mathcal{I}^{D}\_{N}} \tilde{f}_{\mathbf{q}} e^{\pm 2\pi i \left\langle \mathbf{x}_{m} \mid \mathbf{q} \right\rangle}
+c_{m} = \sum_{\mathbf{q} \in \mathcal{I}^{D}_{N}} \tilde{f}_{\mathbf{q}} e^{\pm 2\pi i \left\langle \mathbf{x}_{m} \mid \mathbf{q} \right\rangle}
 ```
 
 where $`\mathcal{I}^{D}_{N} = \mathcal{I}_{N_{1}} \times \cdots \times \mathcal{I}_{N_{D}}`$.
