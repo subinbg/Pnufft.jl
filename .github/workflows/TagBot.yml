@@ -4,6 +4,16 @@ on:
     types:
       - created
   workflow_dispatch:
+    inputs:
+      lookback:
+        description: 'Lookback period for missed tags (e.g., 1 day, 2 weeks)'
+        required: false
+        default: '3'
+permissions:
+  actions: read
+  contents: write
+  issues: read
+  pull-requests: read
 jobs:
   TagBot:
     if: github.event_name == 'workflow_dispatch' || github.actor == 'JuliaTagBot'
